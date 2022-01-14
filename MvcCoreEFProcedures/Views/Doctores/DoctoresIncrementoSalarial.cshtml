@@ -1,0 +1,50 @@
+﻿@model List<Doctor>
+
+@{
+    List<string> especialidades =
+        ViewData["ESPECIALIDADES"] as List<string>;
+}
+
+<h1>Doctores EF Procedures</h1>
+
+<form method="post">
+    <label>Especialidades: </label>
+    <select name="especialidad" class="form-control">
+        @foreach (string espe in especialidades)
+        {
+            <option value="@espe">@espe</option>
+        }
+    </select>
+    <br />
+    <label>Incremento salarial: </label>
+    <input type="text" name="incremento" class="form-control" required />
+    <br />
+    <button type="submit" class="btn btn-info">
+        Incrementar salarios
+    </button>
+</form>
+<hr />
+@if (Model != null)
+{
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>Apellido</th>
+                <th>Especialidad</th>
+                <th>Salario</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Doctor doc in Model)
+            {
+                <tr>
+                    <td>@doc.Apellido</td>
+                    <td>@doc.Especialidad</td>
+                    <td style="background-color:lightgreen;color:black">
+                        @doc.Salario
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

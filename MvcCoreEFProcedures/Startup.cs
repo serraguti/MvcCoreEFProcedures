@@ -29,6 +29,7 @@ namespace MvcCoreEFProcedures
             string cadena =
                 this.Configuration.GetConnectionString("cadenalocalhospital");
             services.AddTransient<RepositoryEnfermos>();
+            services.AddTransient<RepositoryDoctores>();
             services.AddDbContext<EnfermosContext>
                 (options => options.UseSqlServer(cadena));
             services.AddControllersWithViews();
