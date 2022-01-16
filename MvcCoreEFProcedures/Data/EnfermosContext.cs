@@ -27,5 +27,7 @@ namespace MvcCoreEFProcedures.Data
 		public DbSet<Enfermo> Enfermos {get;set;}
 
 		public DbSet<Doctor> Doctores { get; set; }
+
+		public DbSet<Empleado> Empleados { get; set; }
 	}
 }

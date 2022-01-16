@@ -20,34 +20,37 @@ namespace MvcCoreEFProcedures.Repositories
 
         public List<Enfermo> GetEnfermos()
         {
+            var consulta = from datos in this.context.Enfermos
+                           select datos;
+            return consulta.ToList();
             //PARA LLAMAR A PROCEDIMIENTOS SELECT
             //DEBEMOS EXTRAER LA CONEXION DE NUESTRO CONTEXT
             //SE UTILIZAN OBJETOS A LA ANTIGUA DE ADO EF
-            using (DbCommand com =
-            this.context.Database.GetDbConnection().CreateCommand())
-            {
-                string sql = "SP_ALLENFERMOS";
-                com.CommandType = CommandType.StoredProcedure;
-                com.CommandText = sql;
-                com.Connection.Open();
-                DbDataReader reader = com.ExecuteReader();
-                List<Enfermo> enfermos = new List<Enfermo>();
-                while (reader.Read())
-                {
-                    Enfermo enfermo = new Enfermo();
-                    enfermo.Inscripcion =
-                    int.Parse(reader["INSCRIPCION"].ToString());
-                    enfermo.Apellido = reader["APELLIDO"].ToString();
-                    enfermo.Direccion = reader["DIRECCION"].ToString();
-                    enfermo.FechaNacimiento =
-                    DateTime.Parse(reader["FECHA_NAC"].ToString());
-                    enfermo.Genero = reader["S"].ToString();
-                    enfermos.Add(enfermo);
-                }
-                reader.Close();
-                com.Connection.Close();
-                return enfermos;
-            }
+            //using (DbCommand com =
+            //this.context.Database.GetDbConnection().CreateCommand())
+            //{
+            //    string sql = "SP_ALLENFERMOS";
+            //    com.CommandType = CommandType.StoredProcedure;
+            //    com.CommandText = sql;
+            //    com.Connection.Open();
+            //    DbDataReader reader = com.ExecuteReader();
+            //    List<Enfermo> enfermos = new List<Enfermo>();
+            //    while (reader.Read())
+            //    {
+            //        Enfermo enfermo = new Enfermo();
+            //        enfermo.Inscripcion =
+            //        int.Parse(reader["INSCRIPCION"].ToString());
+            //        enfermo.Apellido = reader["APELLIDO"].ToString();
+            //        enfermo.Direccion = reader["DIRECCION"].ToString();
+            //        enfermo.FechaNacimiento =
+            //        DateTime.Parse(reader["FECHA_NAC"].ToString());
+            //        enfermo.Genero = reader["S"].ToString();
+            //        enfermos.Add(enfermo);
+            //    }
+            //    reader.Close();
+            //    com.Connection.Close();
+            //    return enfermos;
+            //}
         }
 
         public Enfermo FindEnfermo(int inscripcion)
