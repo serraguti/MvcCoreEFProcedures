@@ -28,15 +28,11 @@ namespace MvcCoreEFProcedures
         {
             string cadena =
                 this.Configuration.GetConnectionString("cadenalocalhospital");
-            string cadenaoracle =
-                this.Configuration.GetConnectionString("cadenaoracle");
             services.AddTransient<RepositoryEnfermos>();
             services.AddTransient<RepositoryDoctores>();
-            services.AddTransient<RepositoryEmpleados>();
-            //services.AddDbContext<EnfermosContext>
-            //    (options => options.UseSqlServer(cadena));
             services.AddDbContext<EnfermosContext>
-                (options => options.UseOracle(cadenaoracle));
+                (options => options.UseSqlServer(cadena));
+
             services.AddControllersWithViews();
         }
 
