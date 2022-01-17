@@ -19,13 +19,14 @@ using MvcCoreEFProcedures.Models;
 
 namespace MvcCoreEFProcedures.Data
 {
-	public class EnfermosContext: DbContext
+	public class HospitalContext: DbContext
 	{
-		public EnfermosContext
-		(DbContextOptions<EnfermosContext> options)
+		public HospitalContext
+		(DbContextOptions<HospitalContext> options)
 		:base(options){}
-		public DbSet<Enfermo> Enfermos {get;set;}
 
+		public DbSet<Trabajador> Trabajadores { get; set; }
+		public DbSet<Enfermo> Enfermos {get;set;}
 		public DbSet<Doctor> Doctores { get; set; }
 
 		public DbSet<VistaEmpleado> VistaEmpleados { get; set; }

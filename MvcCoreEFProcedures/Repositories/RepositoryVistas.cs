@@ -9,9 +9,9 @@ namespace MvcCoreEFProcedures.Repositories
 {
     public class RepositoryVistas
     {
-        private EnfermosContext context;
+        private HospitalContext context;
 
-        public RepositoryVistas(EnfermosContext context)
+        public RepositoryVistas(HospitalContext context)
         {
             this.context = context;
         }
