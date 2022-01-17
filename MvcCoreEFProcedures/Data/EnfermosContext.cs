@@ -28,6 +28,6 @@ namespace MvcCoreEFProcedures.Data
 
 		public DbSet<Doctor> Doctores { get; set; }
 
-		public DbSet<Empleado> Empleados { get; set; }
+		public DbSet<VistaEmpleado> VistaEmpleados { get; set; }
 	}
 }
